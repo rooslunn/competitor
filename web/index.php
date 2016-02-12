@@ -15,3 +15,5 @@ $app->get('/', function () use ($app) {
 });
 
 $app->run();
+
+// OPCOMP-4 Integrate project with bitbucket TEST #3
