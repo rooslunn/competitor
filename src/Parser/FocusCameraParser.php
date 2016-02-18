@@ -49,7 +49,7 @@ class FocusCameraParser extends BaseParser
         return $categoryUrls;
     }
 
-    public function getProducts(array $categoryUrls): \ArrayObject
+    protected function getProducts(array $categoryUrls): \ArrayObject
     {
         $products = new \ArrayObject();
 
@@ -91,10 +91,7 @@ class FocusCameraParser extends BaseParser
                         $prodMpu = $node->filter(self::SEL_PRODUCT_MPU)->attr('id');
                         $prodMpu = str_replace('BVRRInlineRating-', '', $prodMpu);
 
-                        $product = new Product();
-                        $product->setMpu($prodMpu);
-                        $product->setBrand($productBrand);
-                        $product->setName($productName);
+                        $product = Product::createBase($prodMpu, $productBrand, $productName);
                         $product->setPrice((float) str_replace('$', '', $prodPrice));
                         $product->setUrl($prodUrl);
 

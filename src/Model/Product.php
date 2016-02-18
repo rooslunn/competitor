@@ -115,4 +115,13 @@ class Product
     {
         $this->url = $url;
     }
+
+    public static function createBase(string $mpu, string $brand, string $name): Product
+    {
+        $product = new self();
+        $product->setMpu($mpu);
+        $product->setBrand($brand);
+        $product->setName($name);
+        return $product;
+    }
 }
