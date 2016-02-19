@@ -11,7 +11,7 @@ namespace SV\Parser;
 use Symfony\Component\DomCrawler\Crawler;
 use SV\Model\Product;
 
-class FocusCameraParser extends BaseParser
+class FocusCameraParser extends BaseParser implements IParser
 {
     const CATEGORY_BASE_URL = 'http://www.focuscamera.com/catalog/seo_sitemap/category/?p=';
 

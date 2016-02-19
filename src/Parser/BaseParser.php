@@ -11,6 +11,7 @@ namespace SV\Parser;
 use GuzzleHttp\Client as GuzzleClient;
 use Goutte\Client as GoutteClient;
 use SV\Provider\ProxyProvider;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class BaseParser
@@ -39,6 +40,17 @@ class BaseParser
         $this->goutteClient = new GoutteClient();
         $this->goutteClient->setClient($this->guzzleClient);
 
+    }
+
+    public static function requestHtmlCallback(string $method, string $url, callable $htmlFixCallback): Crawler
+    {
+        $guzzle = new GuzzleClient([
+            'proxy' => ProxyProvider::getRandomProxy(),
+        ]);
+        $response = $guzzle->request($method, $url);
+        $html = (string) $response->getBody();
+        $htmlFixCallback($html);
+        return new Crawler($html);
     }
 
     public function screen(string ...$parts)

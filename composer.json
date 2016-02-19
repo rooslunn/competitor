@@ -13,6 +13,9 @@
     "require-dev": {
     },
     "autoload": {
-        "psr-4": {"SV\\": "src/"}
+        "psr-4": {
+            "SV\\": "src/",
+            "SV\\Playground\\": "playground/"
+        }
     }
 }

@@ -10,5 +10,6 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-SV\Job\FocusCameraJob::run();
+SV\Job\TestJob::run();
+//SV\Job\FocusCameraJob::run();
 
